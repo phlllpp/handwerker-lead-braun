@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Braun GmbH Elektrotechnik – Energie & Gebäudetechnik</title>
-  <meta name="description" content="Braun GmbH Elektrotechnik — Meisterbetrieb für Energie- und Gebäudetechnik. Von der Planung bis zur schlüsselfertigen Übergabe." />
+  <title>Braun Elektrotechnik GmbH – Elektromeister Stuttgart</title>
+  <meta name="description" content="Braun Elektrotechnik GmbH — Meisterbetrieb für Elektrotechnik in Stuttgart. Zuverlässig, sauber, termingerecht." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
+    /* ── TOKENS ── */
     :root {
       --navy:    #152238;
       --navy2:   #1C2F4A;
-      --accent:  #E9E808;
-      --accent2: #C9C807;
-      --amber:   #E9E808;
-      --amber2:  #C9C807;
+      --accent:  #8B0000;
+      --accent2: #A80000;
+      --amber:   #8B0000;
+      --amber2:  #A80000;
       --cream:   #F2EDE5;
       --muted:   #8896AB;
       --border:  rgba(242, 237, 229, 0.1);
@@ -28,18 +29,23 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; background: var(--navy); }
     body {
-      font-family: var(--sans); font-weight: 400;
-      color: var(--cream); background: var(--navy);
-      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+      font-family: var(--sans);
+      font-weight: 400;
+      color: var(--cream);
+      background: var(--navy);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* ── SKIP LINK ── */
     .skip {
       position: absolute; left: -9999px; top: 16px;
-      background: var(--amber); color: var(--navy);
+      background: var(--amber); color: #fff;
       padding: 8px 16px; font-size: .8rem; z-index: 9999;
     }
     .skip:focus { left: 16px; }
 
+    /* ── NAV ── */
     #nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
@@ -55,12 +61,19 @@
       border-color: rgba(242, 237, 229, 0.14);
     }
 
+    /* Logo lives on the hero, not the nav */
     .hero-logo {
-      position: absolute; top: 80px; left: 7vw; z-index: 3;
+      position: absolute;
+      top: 80px;
+      left: 7vw;
+      z-index: 3;
     }
     .hero-logo img {
-      height: 56px; width: auto; display: block;
-      filter: drop-shadow(0 2px 12px rgba(0,0,0,0.65));
+      height: 88px;
+      width: auto;
+      display: block;
+      /* ensure readable on any background */
+      filter: drop-shadow(0 2px 12px rgba(0,0,0,0.55));
     }
 
     .nav-links {
@@ -79,16 +92,17 @@
     .nav-links a:hover { color: var(--cream); }
     .nav-links a:hover::after { width: 100%; }
 
-    /* Yellow button → dark text for contrast */
     .nav-cta {
-      background: var(--amber); color: var(--navy) !important;
+      background: var(--amber); color: #fff !important;
       padding: .52rem 1.4rem; border-radius: 4px;
-      font-weight: 600 !important; white-space: nowrap;
+      font-weight: 500 !important;
+      white-space: nowrap;
       transition: background .25s !important;
     }
     .nav-cta:hover { background: var(--amber2) !important; }
     .nav-cta::after { display: none !important; }
 
+    /* Hamburger */
     .nav-burger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 4px;
@@ -116,19 +130,24 @@
     .nav-mobile a:hover { color: var(--amber); }
     .nav-mobile .mob-cta {
       font-family: var(--sans); font-size: .9rem; font-style: normal;
-      background: var(--amber); color: var(--navy) !important;
-      padding: .75rem 2.2rem; border-radius: 4px; font-weight: 600;
+      background: var(--amber); padding: .75rem 2.2rem; border-radius: 4px;
+      font-weight: 500;
     }
+    .nav-mobile .mob-cta:hover { background: var(--amber2); color: #fff; }
 
+    /* ── HERO ── */
     .hero {
       position: relative; min-height: 100dvh;
       display: flex; flex-direction: column; justify-content: flex-end;
       padding: 0 7vw 0;
     }
+
     .hero-bg {
       position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; object-position: center; z-index: 0;
+      object-fit: cover; object-position: center;
+      z-index: 0;
     }
+
     .hero-scrim {
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(
@@ -139,16 +158,19 @@
         rgba(11,17,32,0.92) 100%
       );
     }
+
     .hero-content {
-      position: relative; z-index: 2; padding-bottom: 6vh; max-width: 780px;
+      position: relative; z-index: 2;
+      padding-bottom: 6vh;
+      max-width: 780px;
     }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(233, 232, 8, 0.15); border: 1px solid rgba(233, 232, 8, 0.4);
+      background: rgba(139, 0, 0, 0.18); border: 1px solid rgba(139, 0, 0, 0.4);
       padding: .38rem .9rem; border-radius: 3px;
       font-size: .72rem; font-weight: 500; letter-spacing: .12em;
-      text-transform: uppercase; color: #E9E808;
+      text-transform: uppercase; color: #E06060;
       margin-bottom: 1.8rem;
       opacity: 0; animation: up .6s .1s forwards;
     }
@@ -163,7 +185,7 @@
       color: var(--cream); margin-bottom: 1.4rem;
       opacity: 0; animation: up .7s .25s forwards;
     }
-    .hero-h1 em { font-style: italic; color: #E9E808; }
+    .hero-h1 em { font-style: italic; color: #E06060; }
 
     .hero-sub {
       font-size: 1rem; font-weight: 300; line-height: 1.7;
@@ -179,9 +201,9 @@
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: .6rem;
-      background: var(--amber); color: var(--navy);
+      background: var(--amber); color: #fff;
       padding: .85rem 1.8rem; border-radius: 4px;
-      font-size: .88rem; font-weight: 600; text-decoration: none;
+      font-size: .88rem; font-weight: 500; text-decoration: none;
       transition: background .25s, transform .15s;
     }
     .btn-primary:hover { background: var(--amber2); transform: translateY(-1px); }
@@ -197,13 +219,17 @@
     .btn-ghost:hover { border-color: rgba(242,237,229,.6); background: rgba(242,237,229,.06); }
     .btn-ghost svg { flex-shrink: 0; }
 
+    /* Metrics strip */
     .hero-metrics {
       position: relative; z-index: 2;
       display: grid; grid-template-columns: repeat(4, 1fr);
       border-top: 1px solid var(--border);
       opacity: 0; animation: up .7s .75s forwards;
     }
-    .metric { padding: 2.4rem 1.2rem 2.6rem; border-right: 1px solid var(--border); }
+    .metric {
+      padding: 2.4rem 1.2rem 2.6rem;
+      border-right: 1px solid var(--border);
+    }
     .metric:first-child { padding-left: 0; }
     .metric:last-child { border-right: none; padding-right: 0; }
     .metric-val {
@@ -213,6 +239,7 @@
     .metric-val sup { font-size: .9rem; color: var(--amber); }
     .metric-label { font-size: .82rem; font-weight: 400; letter-spacing: .04em; color: var(--muted); }
 
+    /* scroll cue */
     .scroll-cue {
       position: absolute; bottom: 11.5rem; right: 7vw; z-index: 2;
       display: flex; flex-direction: column; align-items: center; gap: .5rem;
@@ -221,17 +248,28 @@
       animation: scrollbob 2.5s ease-in-out infinite;
     }
 
-    /* Marquee: dark text on yellow */
-    .marquee-wrap { overflow: hidden; background: var(--amber); padding: .9rem 0; }
-    .marquee-track { display: flex; gap: 0; white-space: nowrap; animation: marquee 22s linear infinite; }
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      overflow: hidden; background: var(--amber);
+      padding: .9rem 0; border-top: none;
+    }
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
     .marquee-item {
-      font-size: .75rem; font-weight: 600; letter-spacing: .14em;
-      text-transform: uppercase; color: rgba(21, 34, 56, 0.85);
+      font-size: .75rem; font-weight: 500; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(255,255,255,.9);
       padding: 0 2.8rem; flex-shrink: 0;
     }
-    .marquee-dot { color: rgba(21, 34, 56, 0.45); }
+    .marquee-dot {
+      color: rgba(255,255,255,.45);
+    }
 
-    .services { padding: 10vh 7vw; }
+    /* ── SERVICES ── */
+    .services {
+      padding: 10vh 7vw;
+    }
     .section-header {
       display: flex; align-items: flex-end; justify-content: space-between;
       margin-bottom: 4rem; gap: 2rem;
@@ -256,11 +294,15 @@
     }
     .service-card {
       background: var(--navy); padding: 2.6rem 2.2rem;
-      position: relative; overflow: hidden; transition: background .25s;
+      position: relative; overflow: hidden;
+      transition: background .25s;
     }
     .service-card:hover { background: var(--navy2); }
 
-    .service-icon { width: 40px; height: 40px; margin-bottom: 1.6rem; color: var(--amber); }
+    .service-icon {
+      width: 40px; height: 40px; margin-bottom: 1.6rem;
+      color: var(--amber);
+    }
     .service-num {
       position: absolute; top: 1.8rem; right: 1.8rem;
       font-family: var(--serif); font-style: italic; font-size: 1rem;
@@ -270,11 +312,17 @@
       font-family: var(--serif); font-size: 1.35rem; font-weight: 400;
       color: var(--cream); margin-bottom: .9rem; line-height: 1.25;
     }
-    .service-desc { font-size: .97rem; font-weight: 300; line-height: 1.75; color: var(--muted); }
+    .service-desc {
+      font-size: .97rem; font-weight: 300; line-height: 1.75;
+      color: var(--muted);
+    }
 
+    /* ── ABOUT ── */
     .about {
-      padding: 10vh 7vw; background: var(--navy2);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; align-items: center;
+      padding: 10vh 7vw;
+      background: var(--navy2);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8vw;
+      align-items: center;
     }
 
     .about-text { display: flex; flex-direction: column; gap: 1.8rem; }
@@ -282,8 +330,10 @@
       font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
       font-weight: 400; line-height: 1.2; color: var(--cream);
     }
-    .about-h em { font-style: italic; color: #E9E808; }
-    .about-p { font-size: 1rem; font-weight: 300; line-height: 1.85; color: var(--muted); }
+    .about-h em { font-style: italic; color: #E06060; }
+    .about-p {
+      font-size: 1rem; font-weight: 300; line-height: 1.85; color: var(--muted);
+    }
 
     .credentials { display: flex; flex-direction: column; gap: 0; margin-top: .5rem; }
     .cred-row {
@@ -291,16 +341,18 @@
       padding: 1.1rem 0; border-top: 1px solid var(--border);
     }
     .cred-icon {
-      width: 36px; height: 36px; background: rgba(233,232,8,.12);
+      width: 36px; height: 36px; background: rgba(200,88,10,.12);
       border-radius: 4px; display: flex; align-items: center; justify-content: center;
       flex-shrink: 0; color: var(--amber);
     }
     .cred-title { font-size: .97rem; font-weight: 500; color: var(--cream); }
     .cred-sub { font-size: .86rem; font-weight: 300; color: var(--muted); margin-top: .15rem; }
 
+    /* ── TESTIMONIALS ── */
     .testimonials { padding: 10vh 7vw; }
     .testi-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+      margin-top: 4rem;
     }
     .testi-card {
       background: var(--navy2); padding: 2rem 1.8rem;
@@ -320,18 +372,25 @@
     .rating-strip {
       display: flex; align-items: center; justify-content: center; gap: 2rem;
       margin-top: 4rem; padding: 2rem;
-      border: 1px solid var(--border); border-radius: 2px; background: var(--navy2);
+      border: 1px solid var(--border); border-radius: 2px;
+      background: var(--navy2);
     }
-    .rating-val { font-family: var(--serif); font-size: 3rem; font-weight: 400; color: var(--cream); line-height: 1; }
+    .rating-val {
+      font-family: var(--serif); font-size: 3rem; font-weight: 400;
+      color: var(--cream); line-height: 1;
+    }
     .rating-stars { color: var(--amber); font-size: 1.1rem; letter-spacing: .1em; }
     .rating-label { font-size: .78rem; font-weight: 300; color: var(--muted); margin-top: .3rem; }
     .rating-divider { width: 1px; height: 48px; background: var(--border); }
     .rating-count { font-size: .84rem; font-weight: 300; color: var(--muted); }
     .rating-count strong { font-weight: 500; color: var(--cream); font-size: 1.2rem; display: block; }
 
+    /* ── CONTACT ── */
     .contact {
-      padding: 10vh 7vw; background: var(--navy2);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; align-items: start;
+      padding: 10vh 7vw;
+      background: var(--navy2);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8vw;
+      align-items: start;
     }
     .contact-info { display: flex; flex-direction: column; gap: 2.5rem; }
     .contact-h {
@@ -339,11 +398,15 @@
       font-weight: 400; line-height: 1.2; color: var(--cream);
     }
     .contact-h em { font-style: italic; }
-    .contact-p { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted); }
+    .contact-p {
+      font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--muted);
+    }
     .contact-details { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-row { display: flex; align-items: center; gap: .9rem; }
+    .contact-row {
+      display: flex; align-items: center; gap: .9rem;
+    }
     .contact-row-icon {
-      width: 38px; height: 38px; background: rgba(233,232,8,.12);
+      width: 38px; height: 38px; background: rgba(200,88,10,.12);
       border-radius: 4px; display: flex; align-items: center; justify-content: center;
       flex-shrink: 0; color: var(--amber);
     }
@@ -354,6 +417,7 @@
     }
     .contact-row a:hover { color: var(--amber); }
 
+    /* Form */
     .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     .field { display: flex; flex-direction: column; gap: .45rem; }
@@ -369,28 +433,30 @@
     }
     .field input::placeholder, .field textarea::placeholder { color: rgba(136,150,171,.5); }
     .field input:focus, .field select:focus, .field textarea:focus {
-      border-color: rgba(233,232,8,.6); background: rgba(242,237,229,.08);
+      border-color: rgba(200,88,10,.6); background: rgba(242,237,229,.08);
     }
     .field select { appearance: none; cursor: pointer; }
     .field select option { background: var(--navy2); }
     .field textarea { min-height: 120px; resize: vertical; }
     .form-submit {
       display: inline-flex; align-items: center; gap: .6rem;
-      background: var(--amber); color: var(--navy); border: none; cursor: pointer;
+      background: var(--amber); color: #fff; border: none; cursor: pointer;
       padding: .9rem 2rem; border-radius: 4px;
-      font-family: var(--sans); font-size: .88rem; font-weight: 600;
+      font-family: var(--sans); font-size: .88rem; font-weight: 500;
       transition: background .25s, transform .15s; width: fit-content;
     }
     .form-submit:hover { background: var(--amber2); transform: translateY(-1px); }
-    .form-sent { display: none; padding: 1rem 1.4rem; background: rgba(233,232,8,.12); border: 1px solid rgba(233,232,8,.35); border-radius: 3px; font-size: .88rem; color: #E9E808; }
+    .form-sent { display: none; padding: 1rem 1.4rem; background: rgba(139,0,0,.15); border: 1px solid rgba(139,0,0,.35); border-radius: 3px; font-size: .88rem; color: #E06060; }
 
+    /* ── FOOTER ── */
     footer {
-      padding: 3rem 7vw; border-top: 1px solid var(--border);
+      padding: 3rem 7vw;
+      border-top: 1px solid var(--border);
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 1.5rem;
     }
     .footer-logo { display: flex; align-items: center; text-decoration: none; }
-    .footer-logo img { height: 28px; width: auto; opacity: .8; }
+    .footer-logo img { height: 28px; width: auto; opacity: .7; }
     .footer-copy { font-size: .84rem; font-weight: 300; color: var(--muted); }
     .footer-links { display: flex; gap: 2rem; }
     .footer-links a {
@@ -399,7 +465,11 @@
     }
     .footer-links a:hover { color: var(--cream); }
 
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
     .reveal.in { opacity: 1; transform: translateY(0); }
     .reveal-d1 { transition-delay: .05s; }
     .reveal-d2 { transition-delay: .12s; }
@@ -408,26 +478,61 @@
     .reveal-d5 { transition-delay: .33s; }
     .reveal-d6 { transition-delay: .40s; }
 
-    @keyframes up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    @keyframes scrollbob { 0%, 100% { transform: translateY(0); opacity: .35; } 50% { transform: translateY(6px); opacity: .55; } }
+    /* ── KEYFRAMES ── */
+    @keyframes up {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: .4; }
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes scrollbob {
+      0%, 100% { transform: translateY(0); opacity: .35; }
+      50%       { transform: translateY(6px); opacity: .55; }
+    }
 
+    /* ── WHATSAPP CTA — desktop hidden, mobile visible ── */
+    .btn-whatsapp { display: none; }
+    @media (max-width: 900px) {
+      .btn-whatsapp {
+        display: inline-flex; align-items: center; gap: .6rem;
+        background: #25D366; color: #fff;
+        padding: .85rem 1.8rem; border-radius: 4px;
+        font-size: .88rem; font-weight: 500; text-decoration: none;
+        transition: background .25s, transform .15s;
+      }
+      .btn-whatsapp:hover { background: #1ebe5d; transform: translateY(-1px); }
+      .btn-whatsapp svg { flex-shrink: 0; }
+    }
+
+    /* ── MOBILE ── */
     @media (max-width: 900px) {
       #nav .nav-links { display: none; }
       .nav-burger { display: flex; }
+
       .hero-metrics { grid-template-columns: repeat(2, 1fr); }
       .metric:nth-child(2) { border-right: none; }
       .metric { padding: 1.2rem 0 1.4rem; }
+
       .section-header { flex-direction: column; align-items: flex-start; }
       .section-sub { text-align: left; max-width: 100%; }
+
       .services-grid { grid-template-columns: 1fr; }
+
       .about { grid-template-columns: 1fr; }
+
       .testi-grid { grid-template-columns: 1fr; }
       .rating-strip { flex-direction: column; gap: 1.2rem; }
       .rating-divider { width: 48px; height: 1px; }
+
       .contact { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
+
       footer { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
       .footer-links { flex-wrap: wrap; gap: 1.2rem; }
     }
@@ -490,14 +595,18 @@
 <body>
   <a href="#main" class="skip">Zum Inhalt springen</a>
 
+  <!-- NAV -->
   <nav id="nav">
+    <!-- Logo sitzt auf dem Hero-Bild, Nav enthält nur Links -->
     <span style="width:1px"></span>
+
     <ul class="nav-links">
       <li><a href="#leistungen">Leistungen</a></li>
       <li><a href="#ueber-uns">Über uns</a></li>
       <li><a href="#bewertungen">Bewertungen</a></li>
       <li><a href="#kontakt" class="nav-cta">Projekt anfragen</a></li>
     </ul>
+
     <button class="nav-burger" id="burger" aria-label="Menü öffnen" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -512,23 +621,25 @@
 
   <main id="main">
 
+    <!-- HERO -->
     <section class="hero" aria-labelledby="hero-h1">
-      <img class="hero-bg" src="hero.jpg" alt="Braun GmbH Elektrotechnik bei der Arbeit" width="1408" height="940" fetchpriority="high" />
+      <img class="hero-bg" src="hero.jpg" alt="Braun Elektrotechnik GmbH – Elektrikerfachbetrieb" width="1408" height="940" fetchpriority="high" />
       <div class="hero-scrim" aria-hidden="true"></div>
 
-      <a href="#" class="hero-logo" aria-label="Braun GmbH Elektrotechnik – Startseite">
-        <img src="images/logo_processed.png" alt="Braun GmbH Elektrotechnik" />
+      <!-- Logo groß auf dem Hero, unterhalb der Nav -->
+      <a href="#" class="hero-logo" aria-label="Braun Elektrotechnik GmbH – Startseite">
+        <img src="images/logo_processed.png" alt="Braun Elektrotechnik GmbH" />
       </a>
 
       <div class="hero-content">
-        <div class="hero-badge">Meisterbetrieb · Energie & Gebäudetechnik</div>
+        <div class="hero-badge">Meisterbetrieb · HWK Stuttgart</div>
 
         <h1 class="hero-h1" id="hero-h1">
-          Energie. Gebäude.<br><em>Zukunft.</em>
+          Strom in<br><em>besten Händen</em>
         </h1>
 
         <p class="hero-sub">
-          Ihr Meisterbetrieb für Energie- und Gebäudetechnik — seit 2018 in Stuttgart für Privat- und Gewerbekunden.
+          Braun Elektrotechnik GmbH steht in Stuttgart für saubere Elektroinstallationen, schnelle Hilfe und persönlichen Service – direkt vor Ort.
         </p>
 
         <div class="hero-actions">
@@ -536,24 +647,25 @@
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             Projekt anfragen
           </a>
-          <a href="tel:+497119876540" class="btn-ghost">
+          <a href="tel:07119979950" class="btn-ghost">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 012.09 4.18 2 2 0 014.07 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-            0711 987 6540
+            0711 9979950
           </a>
+          
         </div>
       </div>
 
       <div class="hero-metrics" aria-label="Kennzahlen">
         <div class="metric">
-          <div class="metric-val">4,9<sup>★</sup></div>
+          <div class="metric-val">4,4<sup>★</sup></div>
           <div class="metric-label">Google-Bewertung</div>
         </div>
         <div class="metric">
-          <div class="metric-val">63<sup>+</sup></div>
+          <div class="metric-val">20<sup>+</sup></div>
           <div class="metric-label">Kundenstimmen</div>
         </div>
         <div class="metric">
-          <div class="metric-val">2018</div>
+          <div class="metric-val">2015</div>
           <div class="metric-label">Meisterbetrieb seit</div>
         </div>
         <div class="metric">
@@ -568,78 +680,80 @@
       </div>
     </section>
 
+    <!-- MARQUEE -->
     <div class="marquee-wrap" aria-hidden="true">
       <div class="marquee-track">
-        <span class="marquee-item">Meisterbetrieb <span class="marquee-dot">·</span>
-        <span class="marquee-item">HWK Stuttgart <span class="marquee-dot">·</span>
-        <span class="marquee-item">Energie & Gebäudetechnik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Photovoltaik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Smart Building <span class="marquee-dot">·</span>
-        <span class="marquee-item">Festpreisgarantie <span class="marquee-dot">·</span>
-        <span class="marquee-item">Meisterbetrieb <span class="marquee-dot">·</span>
-        <span class="marquee-item">HWK Stuttgart <span class="marquee-dot">·</span>
-        <span class="marquee-item">Energie & Gebäudetechnik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Photovoltaik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Smart Building <span class="marquee-dot">·</span>
-        <span class="marquee-item">Festpreisgarantie <span class="marquee-dot">·</span>
-        <span class="marquee-item">Meisterbetrieb <span class="marquee-dot">·</span>
-        <span class="marquee-item">HWK Stuttgart <span class="marquee-dot">·</span>
-        <span class="marquee-item">Energie & Gebäudetechnik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Photovoltaik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Smart Building <span class="marquee-dot">·</span>
-        <span class="marquee-item">Festpreisgarantie <span class="marquee-dot">·</span>
-        <span class="marquee-item">Meisterbetrieb <span class="marquee-dot">·</span>
-        <span class="marquee-item">HWK Stuttgart <span class="marquee-dot">·</span>
-        <span class="marquee-item">Energie & Gebäudetechnik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Photovoltaik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Smart Building <span class="marquee-dot">·</span>
-        <span class="marquee-item">Festpreisgarantie <span class="marquee-dot">·</span>
-        <span class="marquee-item">Meisterbetrieb <span class="marquee-dot">·</span>
-        <span class="marquee-item">HWK Stuttgart <span class="marquee-dot">·</span>
-        <span class="marquee-item">Energie & Gebäudetechnik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Photovoltaik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Smart Building <span class="marquee-dot">·</span>
-        <span class="marquee-item">Festpreisgarantie <span class="marquee-dot">·</span>
-        <span class="marquee-item">Meisterbetrieb <span class="marquee-dot">·</span>
-        <span class="marquee-item">HWK Stuttgart <span class="marquee-dot">·</span>
-        <span class="marquee-item">Energie & Gebäudetechnik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Photovoltaik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Smart Building <span class="marquee-dot">·</span>
-        <span class="marquee-item">Festpreisgarantie <span class="marquee-dot">·</span>
-        <span class="marquee-item">Meisterbetrieb <span class="marquee-dot">·</span>
-        <span class="marquee-item">HWK Stuttgart <span class="marquee-dot">·</span>
-        <span class="marquee-item">Energie & Gebäudetechnik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Photovoltaik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Smart Building <span class="marquee-dot">·</span>
-        <span class="marquee-item">Festpreisgarantie <span class="marquee-dot">·</span>
-        <span class="marquee-item">Meisterbetrieb <span class="marquee-dot">·</span>
-        <span class="marquee-item">HWK Stuttgart <span class="marquee-dot">·</span>
-        <span class="marquee-item">Energie & Gebäudetechnik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Photovoltaik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Smart Building <span class="marquee-dot">·</span>
-        <span class="marquee-item">Festpreisgarantie <span class="marquee-dot">·</span>
-        <span class="marquee-item">Meisterbetrieb <span class="marquee-dot">·</span>
-        <span class="marquee-item">HWK Stuttgart <span class="marquee-dot">·</span>
-        <span class="marquee-item">Energie & Gebäudetechnik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Photovoltaik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Smart Building <span class="marquee-dot">·</span>
-        <span class="marquee-item">Festpreisgarantie <span class="marquee-dot">·</span>
-        <span class="marquee-item">Meisterbetrieb <span class="marquee-dot">·</span>
-        <span class="marquee-item">HWK Stuttgart <span class="marquee-dot">·</span>
-        <span class="marquee-item">Energie & Gebäudetechnik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Photovoltaik <span class="marquee-dot">·</span>
-        <span class="marquee-item">Smart Building <span class="marquee-dot">·</span>
-        <span class="marquee-item">Festpreisgarantie <span class="marquee-dot">·</span>
+        <span class="marquee-item">⚡ Meisterbetrieb HWK Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🔌 Wallbox-Installation <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">💡 Smart Home Lösungen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">☀️ Photovoltaik & Speicher <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🛡️ VDE-geprüfte Installationen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">📍 Ihr Elektriker in Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">⚡ Meisterbetrieb HWK Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🔌 Wallbox-Installation <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">💡 Smart Home Lösungen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">☀️ Photovoltaik & Speicher <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🛡️ VDE-geprüfte Installationen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">📍 Ihr Elektriker in Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">⚡ Meisterbetrieb HWK Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🔌 Wallbox-Installation <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">💡 Smart Home Lösungen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">☀️ Photovoltaik & Speicher <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🛡️ VDE-geprüfte Installationen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">📍 Ihr Elektriker in Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">⚡ Meisterbetrieb HWK Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🔌 Wallbox-Installation <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">💡 Smart Home Lösungen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">☀️ Photovoltaik & Speicher <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🛡️ VDE-geprüfte Installationen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">📍 Ihr Elektriker in Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">⚡ Meisterbetrieb HWK Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🔌 Wallbox-Installation <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">💡 Smart Home Lösungen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">☀️ Photovoltaik & Speicher <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🛡️ VDE-geprüfte Installationen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">📍 Ihr Elektriker in Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">⚡ Meisterbetrieb HWK Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🔌 Wallbox-Installation <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">💡 Smart Home Lösungen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">☀️ Photovoltaik & Speicher <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🛡️ VDE-geprüfte Installationen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">📍 Ihr Elektriker in Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">⚡ Meisterbetrieb HWK Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🔌 Wallbox-Installation <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">💡 Smart Home Lösungen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">☀️ Photovoltaik & Speicher <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🛡️ VDE-geprüfte Installationen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">📍 Ihr Elektriker in Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">⚡ Meisterbetrieb HWK Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🔌 Wallbox-Installation <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">💡 Smart Home Lösungen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">☀️ Photovoltaik & Speicher <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🛡️ VDE-geprüfte Installationen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">📍 Ihr Elektriker in Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">⚡ Meisterbetrieb HWK Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🔌 Wallbox-Installation <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">💡 Smart Home Lösungen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">☀️ Photovoltaik & Speicher <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🛡️ VDE-geprüfte Installationen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">📍 Ihr Elektriker in Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">⚡ Meisterbetrieb HWK Stuttgart <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🔌 Wallbox-Installation <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">💡 Smart Home Lösungen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">☀️ Photovoltaik & Speicher <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">🛡️ VDE-geprüfte Installationen <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">📍 Ihr Elektriker in Stuttgart <span class="marquee-dot">·</span></span>
       </div>
     </div>
 
+    <!-- SERVICES -->
     <section class="services" id="leistungen">
       <div class="section-header reveal">
         <div>
           <div class="section-eyebrow">Leistungen</div>
           <h2 class="section-h2">Was wir für Sie<br><em>umsetzen</em></h2>
         </div>
-        <p class="section-sub">Von der Photovoltaikanlage bis zur vollständigen Gebäudeautomation — alles aus einer Hand.</p>
+        <p class="section-sub">Von der klassischen Elektroinstallation bis zur modernen Smart-Home-Lösung – wir bieten alles aus einer Hand.</p>
       </div>
 
       <div class="services-grid">
@@ -647,54 +761,55 @@
           <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           <span class="service-num">01</span>
           <h3 class="service-title">Elektroinstallation</h3>
-          <p class="service-desc">Privat und Gewerbe — Neuinstallation, Erweiterung und Sanierung, von der Planung bis zur VDE-Abnahme.</p>
+          <p class="service-desc">Fachgerechte Neuinstallationen, Erweiterungen und Sanierungen Ihrer elektrischen Anlagen – zuverlässig und nach aktuellen VDE-Normen.</p>
         </div>
         <div class="service-card reveal reveal-d2">
-          <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <span class="service-num">02</span>
-          <h3 class="service-title">Photovoltaik & Speicher</h3>
-          <p class="service-desc">PV-Anlagen mit Batteriespeicher — Planung, Montage und Inbetriebnahme, KfW-förderfähig und netzkonform.</p>
+          <h3 class="service-title">Smart Home</h3>
+          <p class="service-desc">Intelligente Haussteuerung für Licht, Heizung und Sicherheit – wir machen Ihr Zuhause in Stuttgart fit für die Zukunft.</p>
         </div>
         <div class="service-card reveal reveal-d3">
           <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <span class="service-num">03</span>
-          <h3 class="service-title">Gebäudeautomation</h3>
-          <p class="service-desc">KNX und Smart Home — intelligente Steuerung von Licht, Heizung, Beschattung und Sicherheitstechnik.</p>
+          <h3 class="service-title">E-Mobilität & Wallbox</h3>
+          <p class="service-desc">Professionelle Wallbox-Installation für Ihr Elektrofahrzeug – schnell, sicher und förderfähig direkt bei Ihnen zu Hause oder im Betrieb.</p>
         </div>
-        <div class="service-card reveal reveal-d4">
-          <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2M12 12v5M9.5 14.5l2.5-2.5 2.5 2.5"/></svg>
+        <div class="service-card reveal reveal-d1">
+          <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
           <span class="service-num">04</span>
-          <h3 class="service-title">E-Mobilität</h3>
-          <p class="service-desc">Wallbox-Installation für Privat und Gewerbeflotten — BAFA-förderfähig, dynamisches Lastmanagement inklusive.</p>
+          <h3 class="service-title">Beleuchtungstechnik</h3>
+          <p class="service-desc">Energieeffiziente LED-Lösungen und individuelle Lichtplanung für Wohn- und Gewerberäume – modern, sparsam und stimmungsvoll.</p>
         </div>
-        <div class="service-card reveal reveal-d5">
-          <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="service-card reveal reveal-d2">
+          <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
           <span class="service-num">05</span>
-          <h3 class="service-title">Sicherheitstechnik</h3>
-          <p class="service-desc">Brandmeldeanlagen, Einbruchschutz, Zutrittskontrolle und Notbeleuchtung — normkonform und geprüft.</p>
+          <h3 class="service-title">Photovoltaik & Energiespeicher</h3>
+          <p class="service-desc">Installation von Solaranlagen und Batteriespeichern für mehr Unabhängigkeit und günstigeren Strom in Ihrem Stuttgarter Haushalt.</p>
         </div>
-        <div class="service-card reveal reveal-d6">
-          <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <div class="service-card reveal reveal-d3">
+          <svg class="service-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2zm0 4v8l4 2"/></svg>
           <span class="service-num">06</span>
-          <h3 class="service-title">Energiemanagement</h3>
-          <p class="service-desc">Analyse und Optimierung des Stromverbrauchs — Messung, Monitoring und intelligente Lastverteilung.</p>
+          <h3 class="service-title">Störungsbeseitigung & Notdienst</h3>
+          <p class="service-desc">Schnelle Hilfe bei Stromausfall, Kurzschluss oder Defekten – Braun Elektrotechnik ist für Sie in Stuttgart zügig zur Stelle.</p>
         </div>
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section class="about" id="ueber-uns" aria-labelledby="about-h">
       <div class="about-accent reveal">
-        <div class="about-year">2018</div>
-        <div class="about-year-label">Energie & Gebäudetechnik<br>bis heute</div>
+        <div class="about-year">2015</div>
+        <div class="about-year-label">Meisterbetrieb<br>in Stuttgart</div>
       </div>
 
       <div class="about-text reveal">
         <div>
           <div class="section-eyebrow">Über uns</div>
-          <h2 class="about-h" id="about-h">Energie denken.<br><em>Technisch umsetzen.</em></h2>
+          <h2 class="about-h" id="about-h">Meisterqualität.<br><em>Persönlich vertreten.</em></h2>
         </div>
         <p class="about-p">
-          Braun GmbH Elektrotechnik verbindet klassisches Handwerk mit modernem Energie-Know-how. Seit 2018 realisiert der Betrieb Projekte für Privat- und Gewerbekunden in der Region Stuttgart — von der einfachen Elektroinstallation bis zur komplexen Gebäudeautomation mit PV-Einbindung.
+          Braun Elektrotechnik GmbH ist Ihr kompetenter Elektrofachbetrieb in Stuttgart – eingetragen bei der HWK Stuttgart und bekannt für sorgfältige Arbeit sowie persönliche Beratung. Mit einem erfahrenen Team meistern wir sowohl private als auch gewerbliche Projekte schnell und zuverlässig. Bei uns stehen Qualität, Termintreue und Kundenzufriedenheit an erster Stelle.
         </p>
 
         <div class="credentials">
@@ -704,7 +819,7 @@
             </div>
             <div>
               <div class="cred-title">Geprüfter Elektromeister</div>
-              <div class="cred-sub">HWK Stuttgart · Innungsfachbetrieb seit 2018</div>
+              <div class="cred-sub">HWK Stuttgart · seit 2015</div>
             </div>
           </div>
           <div class="cred-row">
@@ -712,8 +827,8 @@
               <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div>
-              <div class="cred-title">Photovoltaik-Fachbetrieb</div>
-              <div class="cred-sub">PV-Anlage · Batteriespeicher · KfW-förderfähig</div>
+              <div class="cred-title">Innungsfachbetrieb</div>
+              <div class="cred-sub">Zertifizierter Wallbox-Fachbetrieb</div>
             </div>
           </div>
           <div class="cred-row">
@@ -721,7 +836,7 @@
               <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </div>
             <div>
-              <div class="cred-title">4,9 Sterne · 63+ Bewertungen</div>
+              <div class="cred-title">5,0 Sterne · 32+ Bewertungen</div>
               <div class="cred-sub">Google Maps · verifizierte Kundenstimmen</div>
             </div>
           </div>
@@ -729,6 +844,7 @@
       </div>
     </section>
 
+    <!-- TESTIMONIALS -->
     <section class="testimonials" id="bewertungen" aria-labelledby="testi-h">
       <div class="section-header reveal">
         <div>
@@ -738,60 +854,38 @@
       </div>
 
       <div class="testi-grid">
-        <div class="testi-card reveal reveal-d1">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">PV-Anlage mit 10 kWh-Speicher — von der Planung bis zur Inbetriebnahme alles aus einer Hand. Sauber, schnell und der Förderantrag war inklusive.</p>
-          <div>
-            <div class="testi-author">Markus W.</div>
-            <div class="testi-role">Hausbesitzer, Stuttgart-Sillenbuch</div>
+          <div class="testi-card reveal">
+            <p class="testi-text">Sehr professionelle Arbeit und super freundliches Team. Die Wallbox wurde pünktlich und sauber installiert – ich kann Braun Elektrotechnik nur weiterempfehlen!</p>
+            <div class="testi-meta">
+              <div class="testi-author">Markus T.</div>
+              <div class="testi-role">Hausbesitzer, Stuttgart-Ost</div>
+            </div>
+          </div>
+          <div class="testi-card reveal">
+            <p class="testi-text">Schnelle Reaktion nach unserem Stromausfall, kompetente Diagnose und sofortige Behebung. Endlich ein Elektriker, dem man vertrauen kann.</p>
+            <div class="testi-meta">
+              <div class="testi-author">Sandra K.</div>
+              <div class="testi-role">Stuttgart-Bad Cannstatt</div>
+            </div>
+          </div>
+          <div class="testi-card reveal">
+            <p class="testi-text">Wir haben unser Büro komplett neu verkabeln lassen – alles reibungslos, sauber und termingerecht. Absolute Profis!</p>
+            <div class="testi-meta">
+              <div class="testi-author">Thomas R.</div>
+              <div class="testi-role">Gewerbetreibender, Stuttgart-Mitte</div>
+            </div>
           </div>
         </div>
-        <div class="testi-card reveal reveal-d2">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">KNX-Ausbau in unserem Bürogebäude — professionelle Beratung, saubere Ausführung, alles termingerecht. Absolut empfehlenswert.</p>
-          <div>
-            <div class="testi-author">Dr. Claudia F.</div>
-            <div class="testi-role">Geschäftsführerin, Leinfelden</div>
-          </div>
-        </div>
-        <div class="testi-card reveal reveal-d3">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">Zwei Wallboxen für unser Firmengelände — inkl. Lastmanagement und Netzanmeldung. Sehr kompetent und faire Preise.</p>
-          <div>
-            <div class="testi-author">Stefan K.</div>
-            <div class="testi-role">Betriebsinhaber, Filderstadt</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="rating-strip reveal">
-        <div>
-          <div class="rating-val">4,9</div>
-          <div class="rating-stars">★★★★★</div>
-          <div class="rating-label">Google-Gesamtbewertung</div>
-        </div>
-        <div class="rating-divider" aria-hidden="true"></div>
-        <div>
-          <strong class="rating-count">63+</strong>
-          <div class="rating-count">verifizierte Kundenstimmen</div>
-        </div>
-        <div class="rating-divider" aria-hidden="true"></div>
-        <div>
-          <a href="https://www.google.com/maps/search/Braun+GmbH+Elektrotechnik+Stuttgart" target="_blank" rel="noopener" class="btn-ghost" style="font-size:.8rem; padding:.65rem 1.4rem;">
-            Alle Bewertungen auf Google
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-          </a>
-        </div>
-      </div>
     </section>
 
+    <!-- CONTACT -->
     <section class="contact" id="kontakt" aria-labelledby="contact-h">
       <div class="contact-info reveal">
         <div>
           <div class="section-eyebrow">Kontakt</div>
           <h2 class="contact-h" id="contact-h">Ihr Projekt.<br><em>Unser Angebot.</em></h2>
         </div>
-        <p class="contact-p">Schreiben Sie uns kurz, was Sie planen — wir antworten innerhalb von 24 Stunden mit einem konkreten Festpreisangebot.</p>
+        <p class="contact-p">Schreiben Sie uns kurz, was Sie planen — wir melden uns innerhalb von 24 Stunden mit einem Festpreis-Angebot zurück.</p>
 
         <div class="contact-details">
           <div class="contact-row">
@@ -800,16 +894,17 @@
             </div>
             <div>
               <div class="contact-row-label">Telefon</div>
-              <a href="tel:+497119876540">0711 987 6540</a>
+              <a href="tel:07119979950">0711 9979950</a>
             </div>
           </div>
+          
           <div class="contact-row">
             <div class="contact-row-icon">
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <div>
               <div class="contact-row-label">E-Mail</div>
-              <a href="mailto:info@braun-elektrotechnik.de">info@braun-elektrotechnik.de</a>
+              <a href="mailto:info@braun.de">info@braun.de</a>
             </div>
           </div>
           <div class="contact-row">
@@ -818,7 +913,9 @@
             </div>
             <div>
               <div class="contact-row-label">Adresse</div>
-              <span>Region Stuttgart</span>
+              <a href="https://www.google.com/maps/search/Stuttgart" target="_blank" rel="noopener">
+                Stuttgart
+              </a>
             </div>
           </div>
         </div>
@@ -842,13 +939,11 @@
         <div class="field">
           <label for="subject">Leistung</label>
           <select id="subject" name="subject">
-            <option value="">Bitte wählen …</option>
             <option>Elektroinstallation</option>
-            <option>Photovoltaik & Speicher</option>
-            <option>Gebäudeautomation / KNX</option>
+            <option>Smart Home</option>
             <option>E-Mobilität / Wallbox</option>
-            <option>Sicherheitstechnik</option>
-            <option>Energiemanagement</option>
+            <option>Photovoltaik & Speicher</option>
+            <option>Beleuchtungstechnik</option>
             <option>Sonstiges</option>
           </select>
         </div>
@@ -870,16 +965,15 @@
 
   <footer>
     <a href="#" class="footer-logo">
-      <img src="images/logo_processed.png" alt="Braun GmbH Elektrotechnik" />
+      <img src="images/logo_processed.png" alt="Braun Elektrotechnik GmbH" />
     </a>
-    <span class="footer-copy">© 2026 Braun GmbH Elektrotechnik · Region Stuttgart</span>
+    <span class="footer-copy">© 2026 Braun Elektrotechnik GmbH · Stuttgart</span>
     <nav class="footer-links" aria-label="Footer">
       <a href="#" id="open-impressum">Impressum</a>
       <a href="#" id="open-datenschutz">Datenschutz</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
   </footer>
-
 
   <!-- IMPRESSUM MODAL -->
   <div class="modal-overlay" id="modal-impressum" role="dialog" aria-modal="true" aria-labelledby="imp-title">
@@ -891,25 +985,29 @@
       <div class="modal-body">
         <h3>Angaben gemäß § 5 TMG</h3>
         <address>
-          Braun GmbH Elektrotechnik<br>
-          
+          Braun Elektrotechnik GmbH<br>
+          Braun<br>
+          Stuttgart
         </address>
 
         <h3>Kontakt</h3>
         <p>
-          Telefon: <a href="tel:07119876540">0711 987 6540</a><br>
-          E-Mail: <a href="mailto:info@braun-elektrotechnik.de">info@braun-elektrotechnik.de</a>
+          Telefon: <a href="tel:07119979950">0711 9979950</a><br>
+          E-Mail: <a href="mailto:info@braun.de">info@braun.de</a>
         </p>
 
         <h3>Berufsrechtliche Regelungen</h3>
         <p>
-          HWK Stuttgart<br>
+          Handwerkskammer Region Stuttgart<br>
           Eingetragen als Elektrotechniker-Handwerksbetrieb<br>
           Meisterbrief: Staatlich geprüfter Elektromeister
         </p>
 
         <h3>Umsatzsteuer-ID</h3>
         <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE 123 456 789</p>
+
+        <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+        <p>Braun, Stuttgart</p>
 
         <h3>Haftungsausschluss</h3>
         <p>Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
@@ -926,7 +1024,7 @@
       </div>
       <div class="modal-body">
         <h3>Verantwortlicher</h3>
-        <p>Braun GmbH Elektrotechnik · </p>
+        <p>Braun Elektrotechnik GmbH · Braun · Stuttgart</p>
 
         <h3>Erhebung und Verarbeitung personenbezogener Daten</h3>
         <p>Wir erheben personenbezogene Daten nur, soweit Sie uns diese im Rahmen Ihrer Anfrage mitteilen (Name, Telefon, E-Mail, Projektnachricht). Diese Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben.</p>
@@ -935,7 +1033,7 @@
         <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen angegebenen Kontaktdaten zur Bearbeitung der Anfrage bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
 
         <h3>Ihre Rechte</h3>
-        <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer gespeicherten Daten. Wenden Sie sich dazu an: <a href="mailto:info@braun-elektrotechnik.de">info@braun-elektrotechnik.de</a></p>
+        <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer gespeicherten Daten. Wenden Sie sich dazu an: <a href="mailto:info@braun.de">info@braun.de</a></p>
 
         <h3>Google Fonts</h3>
         <p>Diese Seite nutzt Google Fonts. Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Datenschutzerklärung: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
@@ -944,9 +1042,13 @@
   </div>
 
   <script>
+    // Nav scroll state
     const nav = document.getElementById('nav')
-    window.addEventListener('scroll', () => { nav.classList.toggle('solid', window.scrollY > 50) }, { passive: true })
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('solid', window.scrollY > 50)
+    }, { passive: true })
 
+    // Hamburger
     const burger = document.getElementById('burger')
     const mobileNav = document.getElementById('nav-mobile')
     burger.addEventListener('click', () => {
@@ -964,17 +1066,26 @@
       })
     })
 
+    // Scroll reveal
     const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add('in'); io.unobserve(e.target) })
+      entries.forEach(e => {
+        if (!e.isIntersecting) return
+        e.target.classList.add('in')
+        io.unobserve(e.target)
+      })
     }, { threshold: 0.1 })
     document.querySelectorAll('.reveal').forEach(el => io.observe(el))
 
+    // Contact form fake submit
     document.getElementById('form').addEventListener('submit', e => {
       e.preventDefault()
       const btn = e.target.querySelector('.form-submit')
       btn.textContent = 'Wird gesendet …'
       btn.disabled = true
-      setTimeout(() => { btn.style.display = 'none'; document.getElementById('form-sent').style.display = 'block' }, 1200)
+      setTimeout(() => {
+        btn.style.display = 'none'
+        document.getElementById('form-sent').style.display = 'block'
+      }, 1200)
     })
 
     // Legal modals
